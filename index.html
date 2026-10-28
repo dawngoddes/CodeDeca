@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f4ff">
+<meta name="description" content="CodeDeca — pusat materi, simulasi, dan aktivitas pembelajaran Informatika SMA Fase E.">
+<title>INFORMATIKA | CodeDeca</title>
+<style>
+:root{
+  --ink:#101d4b;--muted:#4d5a88;--paper:#ffffff;--line:#dfe3ff;
+  --purple:#4e4be8;--purple2:#7776ff;--blue:#dceaff;--orange:#fff0d9;
+  --green:#d9f5ed;--shadow:0 14px 35px rgba(48,57,118,.13);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f5f6ff;line-height:1.5}
+a{color:inherit}
+.site-shell{max-width:1500px;margin:auto;overflow:hidden;background:#f6f7ff;min-height:100vh}
+.navbar{position:sticky;top:10px;z-index:10;margin:10px auto 0;width:calc(100% - 9%);min-height:70px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.85);border-radius:20px;box-shadow:0 8px 28px rgba(40,52,110,.12);display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;font-weight:900;font-size:clamp(1.2rem,2.3vw,2rem);letter-spacing:.02em}
+.brand-icon{display:grid;place-items:center;width:52px;height:42px;border-radius:12px;background:linear-gradient(145deg,#d9e9ff,#fff);font-size:28px;box-shadow:inset 0 0 0 1px #d4dcff}
+.navlinks{display:flex;align-items:center;gap:8px}
+.navlinks a,.theme-toggle{border:0;background:transparent;text-decoration:none;color:#384576;padding:12px 16px;border-radius:13px;font-weight:650;font-size:.95rem;cursor:pointer}
+.navlinks a:hover,.navlinks a.active{background:var(--purple);color:white}
+.theme-toggle{font-size:1.35rem;padding:8px 12px}
+.hero{position:relative;margin-top:-60px;padding:118px 6% 38px;min-height:335px;display:grid;grid-template-columns:1.25fr .8fr .95fr;gap:24px;align-items:center;overflow:hidden;background:
+ radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.95) 0,rgba(255,255,255,.15) 31%,transparent 50%),
+ linear-gradient(120deg,#b8dcff 0%,#eaf5ff 43%,#d9e8ff 70%,#f8dfc8 100%)}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 16%,rgba(255,255,255,.18) 16.2% 16.8%,transparent 17% 34%);pointer-events:none}
+.hero-copy,.teacher-art,.info-card{position:relative;z-index:1}
+.eyebrow{text-transform:uppercase;letter-spacing:.32em;font-size:.78rem;font-weight:800;color:#43518b;margin:0 0 8px}
+.hero h1{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.02;letter-spacing:-.055em;margin:0 0 14px;font-weight:950}
+.hero h1 span{color:var(--purple)}
+.hero-copy>p:not(.eyebrow){font-size:clamp(1rem,1.5vw,1.23rem);color:#394b81;margin:0;max-width:600px}
+.motto{display:inline-flex;gap:10px;align-items:center;margin-top:18px;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.8);color:#3e4b82;font-size:.9rem;box-shadow:0 5px 16px rgba(55,75,130,.08)}
+.teacher-art{align-self:end;text-align:center;font-size:clamp(5rem,11vw,9rem);filter:drop-shadow(0 12px 8px rgba(40,56,105,.13));line-height:1}
+.teacher-art .chalkboard{display:block;font-size:.9rem;line-height:1.35;letter-spacing:.02em;color:#fff;background:linear-gradient(135deg,#375b60,#1e4349);border:8px solid #b8794b;border-radius:8px;padding:15px 10px;margin-bottom:10px;box-shadow:0 12px 22px #536a6b55}
+.teacher-art .person{font-size:clamp(4.5rem,8vw,7rem)}
+.info-card{background:rgba(255,255,255,.92);border:1px solid white;border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.info-card h2{font-size:1.1rem;margin:0 0 13px;display:flex;gap:10px;align-items:center}
+.info-card h2 span{font-size:1.5rem}
+.info-row{display:grid;grid-template-columns:1fr auto 1.3fr;gap:10px;padding:9px 4px;border-bottom:1px solid #e5e8ff;font-size:.9rem;color:#334477}
+.info-row:last-child{border-bottom:0}
+.info-row b{font-weight:700}
+main{padding:0 4.5% 34px}
+.section-heading{display:flex;align-items:flex-start;gap:13px;margin:0 0 16px}
+.section-heading .symbol{font-size:2rem;line-height:1.2}
+.section-heading h2{margin:0;font-size:clamp(1.35rem,2.3vw,1.8rem);letter-spacing:-.025em}
+.section-heading p{margin:0;color:var(--muted);font-size:.98rem}
+.resources{padding:18px 16px 8px;background:rgba(255,255,255,.78);border:1px solid white;border-radius:26px;box-shadow:0 10px 28px rgba(45,54,120,.08)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{min-width:0;border-radius:22px;padding:12px 13px 16px;box-shadow:0 10px 22px rgba(43,53,115,.09);border:1px solid rgba(255,255,255,.95);display:flex;flex-direction:column}
+.card-blue{background:linear-gradient(150deg,#f8faff,#edf1ff)}
+.card-orange{background:linear-gradient(150deg,#fffaf1,#fff2df)}
+.card-green{background:linear-gradient(150deg,#f3fffc,#e8f8f6)}
+.art{height:174px;border-radius:17px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:12px}
+.card-blue .art{background:linear-gradient(140deg,#c5e0ff,#a9c8ff)}
+.card-orange .art{background:linear-gradient(140deg,#ffe8be,#fff1dc)}
+.card-green .art{background:linear-gradient(140deg,#b9eee2,#d5f7f2)}
+.number{position:absolute;top:10px;left:10px;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;color:white;font-size:1.5rem;font-weight:900;box-shadow:0 4px 12px #243d7040}
+.card-blue .number{background:#4384f7}.card-orange .number{background:#f5a52f}.card-green .number{background:#2b9b83}
+.art-main{font-size:clamp(4.5rem,8vw,7rem);filter:drop-shadow(0 9px 5px rgba(41,60,110,.16));transform:rotate(-5deg)}
+.art-bubble{position:absolute;font-size:2.2rem;filter:drop-shadow(0 4px 2px #54628a20)}
+.bubble-one{left:12%;bottom:18%}.bubble-two{right:12%;top:17%}
+.art-label{position:absolute;right:8%;bottom:17%;background:#fff;border:2px solid #d3e0ff;border-radius:10px;padding:4px 10px;font-size:1rem;font-weight:900;color:#4162bf;transform:rotate(5deg)}
+.card h3{font-size:1.2rem;line-height:1.2;margin:0 5px 7px;letter-spacing:-.02em}
+.card p{margin:0 5px 12px;color:#39466f;font-size:.96rem;line-height:1.42;flex:1}
+.actions{display:grid;grid-template-columns:1fr;gap:8px;margin:0 4px}
+.actions.two{grid-template-columns:1fr 1fr}
+.btn{min-height:45px;border:2px solid transparent;border-radius:13px;padding:9px 11px;display:flex;justify-content:center;align-items:center;gap:8px;text-align:center;text-decoration:none;font-size:.88rem;font-weight:800;line-height:1.2;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 15px rgba(35,45,100,.13)}
+.btn-primary{background:var(--purple);color:white}.btn-outline{background:rgba(255,255,255,.45);border-color:#6766ff;color:#4e4be8}
+.card-orange .btn-primary{background:#8b4b24}.card-orange .btn-outline{border-color:#e7a05e;color:#87451f}
+.card-green .btn-primary{background:#27856f}
+.learning{margin-top:16px;background:linear-gradient(130deg,#e8e8ff,#f0efff);border:1px solid white;border-radius:23px;padding:18px 20px 20px;box-shadow:0 10px 25px rgba(51,57,135,.08)}
+.learning .section-heading{margin-bottom:12px}
+.table-wrap{overflow-x:auto;border:1px solid #cbd0ff;border-radius:16px;background:rgba(255,255,255,.82)}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{text-align:left;padding:12px 16px;vertical-align:top;border-bottom:1px solid #e0e3ff}
+th{background:#f4f4ff;font-size:.94rem}
+td{font-size:.92rem;color:#344477}
+th:first-child,td:first-child{width:19%;border-right:1px solid #d6daff}
+td strong{color:#101d4b}
+footer{padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#e8e8ff;color:#59658f;font-size:.9rem}
+.footer-brand{font-weight:900;color:#263766;font-size:1.1rem}
+footer p{margin:2px 0}
+.heart{color:#ed6684}
+body.dark{--ink:#eef0ff;--muted:#c0c8ed;--paper:#1d2347;background:#111630;color:var(--ink)}
+body.dark .site-shell{background:#151a38}
+body.dark .navbar,body.dark .info-card,body.dark .resources{background:rgba(30,37,76,.96);border-color:#353d70}
+body.dark .navlinks a,body.dark .theme-toggle,body.dark .info-row,body.dark .card p,body.dark td{color:#d7ddff}
+body.dark .hero{background:linear-gradient(120deg,#283d69,#34375f 60%,#684c51)}
+body.dark .hero-copy>p:not(.eyebrow),body.dark .eyebrow,body.dark .motto{color:#e0e7ff}
+body.dark .motto{background:#30385f}
+body.dark .card-blue{background:#252d57}.dark .card-orange{background:#44334a}
+body.dark .card-orange{background:#413348}body.dark .card-green{background:#203f4a}
+body.dark .learning{background:#27264e}
+body.dark .table-wrap{background:#20264c;border-color:#414a83}
+body.dark th{background:#2d335e;color:#f0f1ff}body.dark td{border-color:#363d70}body.dark th:first-child,body.dark td:first-child{border-color:#414a83}
+body.dark footer{background:#20264c;color:#c0c8ed}body.dark .footer-brand,body.dark td strong{color:#fff}
+@media(max-width:1000px){.hero{grid-template-columns:1.2fr .6fr; padding-top:112px}.teacher-art{display:none}.info-card{max-width:100%}.cards{grid-template-columns:1fr 1fr}.card-green{grid-column:1/-1}.card-green .art{height:190px}}
+@media(max-width:650px){.navbar{width:calc(100% - 20px);padding:10px 12px;min-height:60px;top:5px;border-radius:16px}.brand{font-size:1.05rem;gap:8px}.brand-icon{width:39px;height:36px;font-size:23px}.navlinks{gap:1px}.navlinks a{font-size:0;padding:10px}.navlinks a span{font-size:1.05rem}.theme-toggle{padding:8px;font-size:1.15rem}.hero{margin-top:-50px;padding:105px 22px 24px;grid-template-columns:1fr;gap:18px}.hero h1{font-size:3rem}.hero-copy>p:not(.eyebrow){font-size:1rem}.motto{font-size:.78rem;flex-wrap:wrap;line-height:1.3}main{padding:0 12px 24px}.resources{padding:15px 10px 10px}.cards{grid-template-columns:1fr}.card-green{grid-column:auto}.art,.card-green .art{height:180px}.card h3{font-size:1.22rem}.actions.two{grid-template-columns:1fr 1fr}.btn{font-size:.83rem;padding:9px 7px}.learning{padding:15px 11px}.section-heading h2{font-size:1.3rem}.section-heading p{font-size:.87rem}.info-card{padding:15px}.info-row{font-size:.84rem;grid-template-columns:1fr auto 1.2fr}footer{flex-direction:column;text-align:center;gap:8px;padding:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="site-shell">
+  <header class="navbar">
+    <a class="brand" href="#beranda" aria-label="INFORMATIKA beranda"><span class="brand-icon" aria-hidden="true">💻</span><span>INFORMATIKA</span></a>
+    <nav class="navlinks" aria-label="Navigasi utama">
+      <a class="active" href="#beranda"><span>⌂</span> Beranda</a>
+      <a href="#materi"><span>▤</span> Materi</a>
+      <a href="#tentang"><span>♙</span> Tentang</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ubah tema" title="Ubah tema">☼</button>
+    </nav>
+  </header>
+
+  <section class="hero" id="beranda">
+    <div class="hero-copy">
+      <p class="eyebrow">Selamat datang di</p>
+      <h1><span>CodeDeca</span></h1>
+      <p>Kumpulan materi, simulasi, dan aktivitas pembelajaran untuk mendukung proses belajar Informatika di kelas.</p>
+      <div class="motto"><span class="heart">♥</span> Belajar <span>•</span> Berpikir <span>•</span> Berkarya <span>•</span> Bersama Teknologi</div>
+    </div>
+    <div class="teacher-art" aria-label="Ilustrasi kelas Informatika">
+      <span class="chalkboard">Informatika<br>untuk masa depan<br>yang lebih baik ✦</span>
+      <span class="person" aria-hidden="true">🧑🏻‍🏫</span>
+    </div>
+    <aside class="info-card" id="tentang">
+      <h2><span aria-hidden="true">▤</span> Informasi Pembelajaran</h2>
+      <div class="info-row"><span>Penyusun</span><b>:</b><span>Muhammad Fikri Wibowo, S.Pd.</span></div>
+      <div class="info-row"><span>Jenjang Sekolah</span><b>:</b><span>SMA</span></div>
+      <div class="info-row"><span>Fase/Kelas</span><b>:</b><span>E / X</span></div>
+      <div class="info-row"><span>Mata Pelajaran</span><b>:</b><span>Informatika</span></div>
+    </aside>
+  </section>
+
+  <main>
+    <section class="resources" id="materi">
+      <div class="section-heading">
+        <span class="symbol" aria-hidden="true">▤</span>
+        <div><h2>Daftar Materi dan Aktivitas</h2><p>Pilih materi berikut untuk mengakses pembelajaran, simulasi, dan lembar kerja interaktif.</p></div>
+      </div>
+      <div class="cards">
+        <article class="card card-blue">
+          <div class="art">
+            <span class="number">1</span><span class="art-bubble bubble-one">🧩</span><span class="art-bubble bubble-two">☁️</span>
+            <span class="art-main" aria-hidden="true">💻</span><span class="art-label">🎮 GAME</span>
+          </div>
+          <h3>Informatika Kelas X (Ganjil)</h3>
+          <p>Materi pembelajaran Informatika kelas X semester ganjil lengkap dengan mini game untuk latihan dan evaluasi.</p>
+          <div class="actions two">
+            <a class="btn btn-primary" href="https://dawngoddes.github.io/informatikaXganjil/" target="_blank" rel="noopener noreferrer">↗ Lihat Materi</a>
+            <a class="btn btn-outline" href="https://dawngoddes.github.io/InformatikaSMA/" target="_blank" rel="noopener noreferrer">🎮 Main Mini Game</a>
+          </div>
+        </article>
+
+        <article class="card card-orange">
+          <div class="art">
+            <span class="number">2</span><span class="art-bubble bubble-one">🔩</span><span class="art-bubble bubble-two">📐</span>
+            <span class="art-main" aria-hidden="true">🖥️</span><span class="art-label">CPU • RAM • SSD</span>
+          </div>
+          <h3>Arsitektur Komputer Von Neumann</h3>
+          <p>Materi tentang arsitektur komputer Von Neumann dan pendukungnya, serta LKPD interaktif untuk simulasi merakit PC.</p>
+          <div class="actions two">
+            <a class="btn btn-primary" href="https://dawngoddes.github.io/Arsitektur-Komputer-Von-Neumann/" target="_blank" rel="noopener noreferrer">↗ Lihat Materi</a>
+            <a class="btn btn-outline" href="https://dawngoddes.github.io/SimulasiRakitPCfaseE/" target="_blank" rel="noopener noreferrer">▤ Buka LKPD Simulasi Rakit PC</a>
+          </div>
+        </article>
+
+        <article class="card card-green">
+          <div class="art">
+            <span class="number">3</span><span class="art-bubble bubble-one">💡</span><span class="art-bubble bubble-two">✨</span>
+            <span class="art-main" aria-hidden="true">🤖</span><span class="art-label">🔎 AI</span>
+          </div>
+          <h3>LKPD AI Detective</h3>
+          <p>Lembar Kerja Peserta Didik (LKPD) interaktif untuk eksplorasi konsep AI melalui aktivitas detektif yang seru dan menantang.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://dawngoddes.github.io/LKPDAIDetective/" target="_blank" rel="noopener noreferrer">↗ Buka LKPD AI Detective</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="learning" aria-labelledby="cp-heading">
+      <div class="section-heading">
+        <span class="symbol" aria-hidden="true">🎯</span>
+        <div><h2 id="cp-heading">Elemen dan Capaian Pembelajaran</h2><p>Capaian pembelajaran Informatika Fase E (Kelas X).</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Elemen</th><th>Capaian Pembelajaran (CP)</th></tr></thead>
+          <tbody><tr>
+            <td><strong>Berpikir Komputasional dan Literasi Digital</strong></td>
+            <td>Pada akhir Fase E, murid mampu memahami konsep struktur data dan algoritma standar; menerapkan proses komputasi untuk mendapatkan data yang berkualitas; menulis solusi rancangan program dalam pseudocode; memahami model komputer Von Neumann dan peran sistem operasi; memahami penggunaan mesin pencari dengan variabel lebih banyak; mengevaluasi informasi digital dengan membaca lateral; memahami keamanan jaringan dan aplikasi perkantoran; serta menghargai Hak Kekayaan Intelektual dan mengenal profesi di bidang Informatika. Semua upaya tersebut diarahkan untuk membentuk murid yang bernalar kritis, kreatif, mandiri, bergotong royong, dan berakhlak mulia dalam dunia digital.</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><div class="footer-brand">💻 INFORMATIKA</div><p>CodeDeca · Materi pembelajaran Informatika</p></div>
+    <p>Belajar&nbsp; • &nbsp;Berpikir&nbsp; • &nbsp;Berkarya&nbsp; • &nbsp;Bersama Teknologi</p>
+    <p><span class="heart">♥</span> Untuk siswa-siswi hebat Indonesia</p>
+  </footer>
+</div>
+<script>
+const toggle = document.getElementById('themeToggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const dark = document.body.classList.contains('dark');
+  toggle.textContent = dark ? '☾' : '☼';
+  toggle.setAttribute('aria-label', dark ? 'Gunakan tema terang' : 'Gunakan tema gelap');
+});
+document.querySelectorAll('.navlinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('.navlinks a').forEach(item => item.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
